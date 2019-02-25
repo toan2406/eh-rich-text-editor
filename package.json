@@ -1,0 +1,38 @@
+{
+  "name": "eh-rich-text-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.es.js",
+  "scripts": {
+    "build:watch": "rollup -c rollup.config.js --watch",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "slate": "^0.44.10",
+    "slate-react": "^0.21.16"
+  },
+  "peerDependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/preset-react": "^7.0.0",
+    "@emotion/core": "0.x.x",
+    "@storybook/react": "^4.1.13",
+    "babel-loader": "^8.0.5",
+    "rollup": "^1.2.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "webpack": "^4.29.5"
+  }
+}
