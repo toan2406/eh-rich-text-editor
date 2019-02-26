@@ -1,6 +1,8 @@
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import globals from 'rollup-plugin-node-globals';
+import builtins from 'rollup-plugin-node-builtins';
 
 export default {
   input: 'src/index.js',
@@ -19,8 +21,10 @@ export default {
       include: 'node_modules/**',
       namedExports: { esrever: ['reverse'] },
     }),
+    globals(),
+    builtins(),
   ],
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'styled-components'],
   watch: {
     include: 'src/**',
   },

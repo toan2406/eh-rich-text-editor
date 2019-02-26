@@ -1,11 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@storybook/react/demo';
-import RichTextEditor from '../lib/index.es.js';
+import Demo from '../demo';
 
-storiesOf('Rich Text Editor', module).add('with common state', () => (
-  <RichTextEditor />
-));
+storiesOf('Rich Text Editor', module).add('interactive demo', () => <Demo />);
 
 storiesOf('Button', module)
   .add('with text', () => <Button>Hello Button</Button>)

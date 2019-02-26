@@ -1,40 +1,34 @@
 import React from 'react';
 import { Editor } from 'slate-react';
-import { Value } from 'slate';
+import { Toolbar } from './components/Toolbar';
+import bold from './plugins/bold';
+import headingOne from './plugins/heading-one';
 
-const initialValue = Value.fromJSON({
-  document: {
-    nodes: [
-      {
-        object: 'block',
-        type: 'paragraph',
-        nodes: [
-          {
-            object: 'text',
-            leaves: [
-              {
-                text: 'A line of text in a paragraph. Nice!',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-});
+const plugins = [bold(), headingOne()];
 
-class App extends React.Component {
+class RichTextEditor extends React.Component {
   state = {
-    value: initialValue,
+    editor: null,
   };
 
-  onChange = ({ value }) => {
-    this.setState({ value });
-  };
+  ref = editor => this.setState({ editor });
 
   render() {
-    return <Editor value={this.state.value} onChange={this.onChange} />;
+    const { editor } = this.state;
+    const { value, onChange } = this.props;
+
+    return (
+      <div>
+        <Toolbar>{plugins.map(plugin => plugin.renderButton(editor))}</Toolbar>
+        <Editor
+          ref={this.ref}
+          plugins={plugins}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    );
   }
 }
 
-export default App;
+export default RichTextEditor;
