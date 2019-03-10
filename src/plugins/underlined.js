@@ -3,19 +3,19 @@ import { createPlugin, RenderButton } from '../helpers';
 import { Hotkey, RenderMark } from '../hooks';
 import { Button, Icon } from '../components';
 
-const handleHotKeyPress = editor => editor.toggleMark('bold');
+const handleHotKeyPress = editor => editor.toggleMark('underlined');
 
-const Mark = ({ children }) => <strong>{children}</strong>;
+const Mark = ({ children }) => <u>{children}</u>;
 
 const ToolbarButton = ({ editor }) => (
-  <Button onClick={editor.toggleMark.bind(editor, 'bold')}>
-    <Icon>format_bold</Icon>
+  <Button onClick={editor.toggleMark.bind(editor, 'underlined')}>
+    <Icon>format_underlined</Icon>
   </Button>
 );
 
 export default () =>
   createPlugin([
-    Hotkey('mod+b', handleHotKeyPress),
-    RenderMark('bold', Mark),
+    Hotkey('mod+u', handleHotKeyPress),
+    RenderMark('underlined', Mark),
     RenderButton(ToolbarButton),
   ]);

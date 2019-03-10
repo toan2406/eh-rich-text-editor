@@ -10,4 +10,7 @@ const RenderButton = Component => ({
   },
 });
 
-export { merge, createPlugin, RenderButton };
+const hasBlock = (editor, type) =>
+  editor.value.blocks.some(node => node.type === type);
+
+export { merge, createPlugin, RenderButton, hasBlock };
