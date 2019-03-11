@@ -49,6 +49,7 @@ class RichTextEditor extends React.Component {
             value={value}
             onChange={onChange}
             schema={schema}
+            style={{ padding: 20 }}
           />
         </Content>
       </Container>
