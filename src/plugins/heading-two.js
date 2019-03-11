@@ -13,7 +13,7 @@ import {
 const Node = ({ children }) => <h2>{children}</h2>;
 
 const ToolbarButton = ({ editor }) => (
-  <Button onClick={makeHandleClick(editor)}>
+  <Button isSeparated onClick={makeHandleClick(editor)}>
     <Icon>looks_two</Icon>
   </Button>
 );

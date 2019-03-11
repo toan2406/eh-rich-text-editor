@@ -30,7 +30,7 @@ const Node = ({ node, isFocused, attributes }) => (
 );
 
 const ToolbarButton = ({ editor }) => (
-  <Button>
+  <Button isSeparated>
     <Icon>insert_photo</Icon>
     <FileInput
       type="file"

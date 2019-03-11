@@ -9,6 +9,9 @@ import {
 const getColorByStatus = ({ active }) =>
   active ? ACTIVE_BUTTON_COLOR : INACTIVE_BUTTON_COLOR;
 
+const getBorderByProp = ({ isSeparated }) =>
+  isSeparated ? `solid thin ${BORDER_COLOR}` : 'none';
+
 export default styled.div`
   position: relative;
   vertical-align: middle;
@@ -17,7 +20,7 @@ export default styled.div`
   justify-content: center;
   min-width: 40px;
   min-height: 40px;
-  border-right: solid thin ${BORDER_COLOR};
+  border-right: ${getBorderByProp};
   color: ${getColorByStatus};
   cursor: pointer;
 

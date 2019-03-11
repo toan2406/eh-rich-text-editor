@@ -8,7 +8,7 @@ const handleHotKeyPress = editor => editor.toggleMark('underlined');
 const Mark = ({ children }) => <u>{children}</u>;
 
 const ToolbarButton = ({ editor }) => (
-  <Button onClick={editor.toggleMark.bind(editor, 'underlined')}>
+  <Button isSeparated onClick={editor.toggleMark.bind(editor, 'underlined')}>
     <Icon>format_underlined</Icon>
   </Button>
 );

@@ -13,4 +13,9 @@ const RenderButton = Component => ({
 const hasBlock = (editor, type) =>
   editor.value.blocks.some(node => node.type === type);
 
-export { merge, createPlugin, RenderButton, hasBlock };
+const hasWrappedBlock = (editor, type) =>
+  editor.value.blocks.some(node =>
+    editor.value.document.getClosest(node.key, parent => parent.type === type),
+  );
+
+export { merge, createPlugin, RenderButton, hasBlock, hasWrappedBlock };
