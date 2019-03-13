@@ -10,7 +10,9 @@ import {
   NUMBERED_LIST_NODE,
 } from '../constants/editor';
 
-const Node = ({ children }) => <h2>{children}</h2>;
+const Node = ({ children, node: { data } }) => (
+  <h2 style={data.get('style')}>{children}</h2>
+);
 
 const ToolbarButton = ({ editor }) => (
   <Button isSeparated onClick={makeHandleClick(editor)}>

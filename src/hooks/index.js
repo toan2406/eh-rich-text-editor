@@ -11,15 +11,21 @@ const Hotkey = (hotkey, fn) => ({
 
 const RenderMark = (type, Component) => ({
   renderMark(props, editor, next) {
-    if (props.mark.type !== type) return next();
-    return <Component {...props} />;
+    const { attributes, children, mark } = props;
+    if (mark.type !== type) return next();
+    return (
+      <Component attributes={attributes} children={children} mark={mark} />
+    );
   },
 });
 
 const RenderNode = (type, Component) => ({
   renderNode(props, editor, next) {
-    if (props.node.type !== type) return next();
-    return <Component {...props} />;
+    const { attributes, children, node } = props;
+    if (node.type !== type) return next();
+    return (
+      <Component attributes={attributes} children={children} node={node} />
+    );
   },
 });
 
