@@ -29,4 +29,17 @@ const RenderNode = (type, Component) => ({
   },
 });
 
-export { Hotkey, RenderMark, RenderNode };
+const RenderNodes = rules => ({
+  renderNode(props, editor, next) {
+    const { attributes, children, node } = props;
+    return rules.reduce((element, rule) => {
+      const [type, Component] = rule;
+      if (node.type !== type) return element;
+      return (
+        <Component attributes={attributes} children={children} node={node} />
+      );
+    }, next());
+  },
+});
+
+export { Hotkey, RenderMark, RenderNode, RenderNodes };

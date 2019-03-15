@@ -14,6 +14,7 @@ import bulletedList, { listItem } from './plugins/bulleted-list';
 import alignmentLeft from './plugins/alignment-left';
 import alignmentCenter from './plugins/alignment-center';
 import alignmentRight from './plugins/alignment-right';
+import table from './plugins/table';
 import defaultNode from './plugins/default-node';
 import schema from './schema';
 
@@ -38,6 +39,8 @@ const plugins = [
   listItem(),
 
   image(),
+
+  table(),
 
   defaultNode(),
 ];

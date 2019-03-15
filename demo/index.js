@@ -27,6 +27,8 @@ const initialValue = Value.fromJSON({
 
 const Wrapper = styled.div`
   padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 `;
 
 const DataViewer = styled.code`

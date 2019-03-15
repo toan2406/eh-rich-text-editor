@@ -3,3 +3,5 @@ export { default as Toolbar } from './Toolbar';
 export { default as Content } from './Content';
 export { default as Button } from './Button';
 export { default as Icon } from './Icon';
+export { default as Menu } from './Menu';
+export { MenuItem } from './Menu';

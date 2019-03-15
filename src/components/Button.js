@@ -5,6 +5,7 @@ import {
   INACTIVE_BUTTON_COLOR,
   BORDER_COLOR,
 } from '../constants/color';
+import { Menu } from './Menu';
 
 const getColorByStatus = ({ active }) =>
   active ? ACTIVE_BUTTON_COLOR : INACTIVE_BUTTON_COLOR;
@@ -26,5 +27,9 @@ export default styled.div`
 
   &:hover {
     background: rgba(0, 0, 0, 0.03);
+
+    ${Menu} {
+      display: block;
+    }
   }
 `;
