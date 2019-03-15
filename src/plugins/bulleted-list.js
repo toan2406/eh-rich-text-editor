@@ -5,7 +5,7 @@ import {
   hasBlock,
   hasWrappedBlock,
 } from '../helpers';
-import { RenderNode } from '../hooks';
+import { RenderNodes } from '../hooks';
 import { Button, Icon } from '../components';
 import {
   DEFAULT_NODE,
@@ -36,12 +36,8 @@ const makeHandleClick = editor => () => {
   return editor.setBlocks(LIST_ITEM_NODE).wrapBlock(BULLETED_LIST_NODE);
 };
 
-const listItem = () => createPlugin([RenderNode(LIST_ITEM_NODE, ItemNode)]);
-const bulletedList = () =>
+export default () =>
   createPlugin([
-    RenderNode(BULLETED_LIST_NODE, ListNode),
+    RenderNodes([[BULLETED_LIST_NODE, ListNode], [LIST_ITEM_NODE, ItemNode]]),
     RenderButton(ToolbarButton),
   ]);
-
-export { listItem };
-export default bulletedList;

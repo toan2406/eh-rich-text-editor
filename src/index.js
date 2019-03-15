@@ -10,7 +10,7 @@ import headingOne from './plugins/heading-one';
 import headingTwo from './plugins/heading-two';
 import image from './plugins/image';
 import numberedList from './plugins/numbered-list';
-import bulletedList, { listItem } from './plugins/bulleted-list';
+import bulletedList from './plugins/bulleted-list';
 import alignmentLeft from './plugins/alignment-left';
 import alignmentCenter from './plugins/alignment-center';
 import alignmentRight from './plugins/alignment-right';
@@ -36,7 +36,6 @@ const plugins = [
 
   numberedList(),
   bulletedList(),
-  listItem(),
 
   image(),
 
