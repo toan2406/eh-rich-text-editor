@@ -46,12 +46,12 @@ const makeHandleUpload = editor => e => {
 
   if (!file) return;
 
-  reader.addEventListener('load', () =>
+  reader.addEventListener('load', () => {
     editor.insertBlock({
       type: IMAGE_NODE,
       data: { src: reader.result },
-    }),
-  );
+    });
+  });
 
   reader.readAsDataURL(file);
 };

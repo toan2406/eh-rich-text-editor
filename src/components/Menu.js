@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { BORDER_COLOR, TEXT_COLOR, LIGHT_TEXT_COLOR } from '../constants/color';
 
