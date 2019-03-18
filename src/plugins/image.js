@@ -1,9 +1,11 @@
 import React from 'react';
+import { Block } from 'slate';
 import styled from 'styled-components';
 import { createPlugin, RenderButton } from '../helpers';
 import { RenderNode } from '../hooks';
 import { Button, Icon } from '../components';
 import { IMAGE_NODE } from '../constants/editor';
+import { IMAGE_PLACEHOLDER_COLOR } from '../constants/color';
 
 const getBorderByStatus = ({ selected }) =>
   selected ? 'solid thin blue' : 'none';
@@ -25,9 +27,23 @@ const FileInput = styled.input`
   cursor: pointer;
 `;
 
-const Node = ({ node, isFocused, attributes }) => (
-  <Image src={node.data.get('src')} selected={isFocused} {...attributes} />
-);
+const Placeholder = styled.div.attrs({
+  children: 'Uploading...',
+})`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 200px;
+  border: ${getBorderByStatus};
+  background: ${IMAGE_PLACEHOLDER_COLOR};
+`;
+
+const Node = ({ node, isFocused, attributes }) => {
+  const src = node.data.get('src');
+  if (!src) return <Placeholder selected={isFocused} {...attributes} />;
+  return <Image src={src} selected={isFocused} {...attributes} />;
+};
 
 const ToolbarButton = ({ editor }) => (
   <Button isSeparated>
@@ -42,18 +58,23 @@ const ToolbarButton = ({ editor }) => (
 
 const makeHandleUpload = editor => e => {
   const file = e.target.files[0];
-  const reader = new FileReader();
 
   if (!file) return;
 
-  reader.addEventListener('load', () => {
-    editor.insertBlock({
-      type: IMAGE_NODE,
-      data: { src: reader.result },
-    });
+  const image = Block.create({
+    type: IMAGE_NODE,
+    data: { src: '' },
   });
 
-  reader.readAsDataURL(file);
+  editor.insertBlock(image);
+
+  setTimeout(() => {
+    editor.setNodeByKey(image.key, {
+      data: {
+        src: 'https://images.pexels.com/photos/20787/pexels-photo.jpg?w=500',
+      },
+    });
+  }, 3000);
 };
 
 export default () =>

@@ -3,6 +3,7 @@ const INACTIVE_BUTTON_COLOR = '#aaa';
 const BORDER_COLOR = '#e0e0e0';
 const TEXT_COLOR = '#333';
 const LIGHT_TEXT_COLOR = '#d0d0d0';
+const IMAGE_PLACEHOLDER_COLOR = '#ccc';
 
 export {
   ACTIVE_BUTTON_COLOR,
@@ -10,4 +11,5 @@ export {
   BORDER_COLOR,
   TEXT_COLOR,
   LIGHT_TEXT_COLOR,
+  IMAGE_PLACEHOLDER_COLOR,
 };

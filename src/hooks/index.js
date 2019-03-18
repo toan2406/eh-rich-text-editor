@@ -14,29 +14,35 @@ const RenderMark = (type, Component) => ({
     const { attributes, children, mark } = props;
     if (mark.type !== type) return next();
     return (
-      <Component attributes={attributes} children={children} mark={mark} />
+      <Component attributes={attributes} mark={mark}>
+        {children}
+      </Component>
     );
   },
 });
 
 const RenderNode = (type, Component) => ({
   renderNode(props, editor, next) {
-    const { attributes, children, node } = props;
+    const { attributes, children, node, isFocused } = props;
     if (node.type !== type) return next();
     return (
-      <Component attributes={attributes} children={children} node={node} />
+      <Component attributes={attributes} node={node} isFocused={isFocused}>
+        {children}
+      </Component>
     );
   },
 });
 
 const RenderNodes = rules => ({
   renderNode(props, editor, next) {
-    const { attributes, children, node } = props;
+    const { attributes, children, node, isFocused } = props;
     return rules.reduce((element, rule) => {
       const [type, Component] = rule;
       if (node.type !== type) return element;
       return (
-        <Component attributes={attributes} children={children} node={node} />
+        <Component attributes={attributes} node={node} isFocused={isFocused}>
+          {children}
+        </Component>
       );
     }, next());
   },
