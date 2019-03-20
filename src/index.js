@@ -73,4 +73,6 @@ class RichTextEditor extends React.Component {
   }
 }
 
+export * from './helpers'
+
 export default RichTextEditor;
