@@ -2,6 +2,22 @@ import React from 'react';
 import { Value } from 'slate';
 import styled from 'styled-components';
 import RichTextEditor from '../src';
+import {
+  branch,
+  headingOne,
+  headingTwo,
+  bold,
+  italic,
+  underlined,
+  alignmentLeft,
+  alignmentCenter,
+  alignmentRight,
+  numberedList,
+  bulletedList,
+  image,
+  table,
+  defaultNode,
+} from '../src/plugins';
 import { BORDER_COLOR } from '../src/constants/color';
 
 const initialValue = Value.fromJSON({
@@ -42,6 +58,31 @@ const DataViewer = styled.code`
   white-space: pre-wrap;
 `;
 
+const catImageUrl =
+  'https://images.pexels.com/photos/20787/pexels-photo.jpg?w=500';
+
+const mockUploadImage = () =>
+  new Promise(resolve => setTimeout(() => resolve(catImageUrl), 3000));
+
+const plugins = [
+  branch(),
+  headingOne(),
+  headingTwo(),
+  bold(),
+  italic(),
+  underlined(),
+  alignmentLeft(),
+  alignmentCenter(),
+  alignmentRight(),
+  numberedList(),
+  bulletedList(),
+  image({
+    uploadImage: mockUploadImage,
+  }),
+  table(),
+  defaultNode(),
+];
+
 class Demo extends React.Component {
   state = { value: initialValue };
 
@@ -50,7 +91,11 @@ class Demo extends React.Component {
   render() {
     return (
       <Wrapper>
-        <RichTextEditor value={this.state.value} onChange={this.handleChange} />
+        <RichTextEditor
+          value={this.state.value}
+          onChange={this.handleChange}
+          plugins={plugins}
+        />
         <DataViewer>
           {JSON.stringify(this.state.value.toJSON(), null, 2)}
         </DataViewer>

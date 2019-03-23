@@ -45,18 +45,7 @@ const Node = ({ node, isFocused, attributes }) => {
   return <Image src={src} selected={isFocused} {...attributes} />;
 };
 
-const ToolbarButton = ({ editor }) => (
-  <Button isSeparated>
-    <Icon>insert_photo</Icon>
-    <FileInput
-      type="file"
-      accept="image/png, image/jpeg"
-      onChange={makeHandleUpload(editor)}
-    />
-  </Button>
-);
-
-const makeHandleUpload = editor => e => {
+const makeHandleFileChange = (editor, uploadImage) => e => {
   const file = e.target.files[0];
 
   if (!file) return;
@@ -68,14 +57,24 @@ const makeHandleUpload = editor => e => {
 
   editor.insertBlock(image);
 
-  setTimeout(() => {
+  uploadImage().then(url =>
     editor.setNodeByKey(image.key, {
-      data: {
-        src: 'https://images.pexels.com/photos/20787/pexels-photo.jpg?w=500',
-      },
-    });
-  }, 3000);
+      data: { src: url },
+    }),
+  );
 };
 
-export default () =>
-  createPlugin([RenderNode(IMAGE_NODE, Node), RenderButton(ToolbarButton)]);
+export default ({ uploadImage }) =>
+  createPlugin([
+    RenderNode(IMAGE_NODE, Node),
+    RenderButton(({ editor }) => (
+      <Button isSeparated>
+        <Icon>insert_photo</Icon>
+        <FileInput
+          type="file"
+          accept="image/png, image/jpeg"
+          onChange={makeHandleFileChange(editor, uploadImage)}
+        />
+      </Button>
+    )),
+  ]);

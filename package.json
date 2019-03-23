@@ -2,7 +2,7 @@
   "name": "eh-rich-text-editor",
   "version": "1.2.0",
   "description": "",
-  "main": "lib/index.es.js",
+  "main": "lib",
   "scripts": {
     "build:watch": "rollup -c rollup.config.js --watch",
     "storybook": "start-storybook -p 9001 -c .storybook"
