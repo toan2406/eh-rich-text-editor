@@ -61,8 +61,20 @@ const DataViewer = styled.code`
 const catImageUrl =
   'https://images.pexels.com/photos/20787/pexels-photo.jpg?w=500';
 
-const mockUploadImage = () =>
-  new Promise(resolve => setTimeout(() => resolve(catImageUrl), 3000));
+const mockUploadImage = file => {
+  const formData = new FormData();
+  formData.append('attachment', file);
+
+  return fetch(
+    'https://marketplace.staging.ehrocks.com/v3/admin/assets/image_descriptions',
+    {
+      method: 'GET',
+      headers: {
+        'Jwt-Token': '',
+      },
+    },
+  );
+};
 
 const plugins = [
   branch(),
