@@ -64,6 +64,8 @@ const makeHandleFileChange = (editor, uploadImage) => e => {
   );
 };
 
+const clearValue = e => (e.target.value = null);
+
 export default ({ uploadImage }) =>
   createPlugin([
     RenderNode(IMAGE_NODE, Node),
@@ -74,6 +76,7 @@ export default ({ uploadImage }) =>
           type="file"
           accept="image/png, image/jpeg"
           onChange={makeHandleFileChange(editor, uploadImage)}
+          onClick={clearValue}
         />
       </Button>
     )),

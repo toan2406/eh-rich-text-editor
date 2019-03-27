@@ -14,7 +14,10 @@ class RichTextEditor extends React.Component {
     const { editor } = this.state;
     const { value, onChange, plugins = [] } = this.props;
     const buttons =
-      editor && plugins.map(({ renderButton = noop }) => renderButton(editor));
+      editor &&
+      plugins.map(({ renderButton = noop }, index) =>
+        renderButton({ key: index }, editor),
+      );
 
     return (
       <Container>
