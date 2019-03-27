@@ -12,7 +12,7 @@ class RichTextEditor extends React.Component {
 
   render() {
     const { editor } = this.state;
-    const { value, onChange, plugins = [] } = this.props;
+    const { value, onChange, plugins = [], ...otherProps } = this.props;
     const buttons =
       editor &&
       plugins.map(({ renderButton = noop }, index) =>
@@ -30,6 +30,7 @@ class RichTextEditor extends React.Component {
             onChange={onChange}
             schema={schema}
             style={{ padding: 20 }}
+            {...otherProps}
           />
         </Content>
       </Container>
