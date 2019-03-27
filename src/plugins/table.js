@@ -37,8 +37,8 @@ const StyledTableCell = styled.td`
 `;
 
 const Table = ({ attributes, children }) => (
-  <StyledTable>
-    <tbody {...attributes}>{children}</tbody>
+  <StyledTable {...attributes}>
+    <tbody>{children}</tbody>
   </StyledTable>
 );
 

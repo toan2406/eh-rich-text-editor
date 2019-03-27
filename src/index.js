@@ -1,9 +1,12 @@
 import React from 'react';
+import { Value } from 'slate';
 import { Editor } from 'slate-react';
 import { Container, Toolbar, Content } from './components';
 import schema from './schema';
 
 const noop = () => {};
+
+const fromJSON = Value.fromJSON;
 
 class RichTextEditor extends React.Component {
   state = { editor: null };
@@ -38,4 +41,5 @@ class RichTextEditor extends React.Component {
   }
 }
 
+export { fromJSON };
 export default RichTextEditor;

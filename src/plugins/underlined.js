@@ -5,7 +5,7 @@ import { Button, Icon } from '../components';
 
 const handleHotKeyPress = editor => editor.toggleMark('underlined');
 
-const Mark = ({ children }) => <u>{children}</u>;
+const Mark = ({ children, attributes }) => <u {...attributes}>{children}</u>;
 
 const ToolbarButton = ({ editor }) => (
   <Button isSeparated onClick={editor.toggleMark.bind(editor, 'underlined')}>

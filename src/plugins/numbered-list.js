@@ -14,8 +14,12 @@ import {
   NUMBERED_LIST_NODE,
 } from '../constants/editor';
 
-const ItemNode = ({ children }) => <li>{children}</li>;
-const ListNode = ({ children }) => <ol>{children}</ol>;
+const ItemNode = ({ children, attributes }) => (
+  <li {...attributes}>{children}</li>
+);
+const ListNode = ({ children, attributes }) => (
+  <ol {...attributes}>{children}</ol>
+);
 
 const ToolbarButton = ({ editor }) => (
   <Button isSeparated onClick={makeHandleClick(editor)}>

@@ -10,8 +10,10 @@ import {
   NUMBERED_LIST_NODE,
 } from '../constants/editor';
 
-const Node = ({ children, node: { data } }) => (
-  <h2 style={data.get('style')}>{children}</h2>
+const Node = ({ children, attributes, node: { data } }) => (
+  <h2 {...attributes} style={data.get('style')}>
+    {children}
+  </h2>
 );
 
 const ToolbarButton = ({ editor }) => (

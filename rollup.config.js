@@ -19,7 +19,13 @@ const plugins = [
   builtins(),
 ];
 
-const external = ['react', 'react-dom', 'styled-components'];
+const external = [
+  'react',
+  'react-dom',
+  'styled-components',
+  'slate',
+  'slate-react',
+];
 
 const watch = { include: 'src/**' };
 

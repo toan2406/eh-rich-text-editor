@@ -5,7 +5,7 @@ import { Button, Icon } from '../components';
 
 const handleHotKeyPress = editor => editor.toggleMark('italic');
 
-const Mark = ({ children }) => <em>{children}</em>;
+const Mark = ({ children, attributes }) => <em {...attributes}>{children}</em>;
 
 const ToolbarButton = ({ editor }) => (
   <Button onClick={editor.toggleMark.bind(editor, 'italic')}>
