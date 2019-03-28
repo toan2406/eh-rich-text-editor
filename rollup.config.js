@@ -32,14 +32,14 @@ const watch = { include: 'src/**' };
 export default [
   {
     input: 'src/index.js',
-    output: [{ file: 'lib/index.js', format: 'es' }],
+    output: [{ file: 'lib/index.js', format: 'cjs', exports: 'named' }],
     plugins,
     external,
     watch,
   },
   {
     input: 'src/plugins/index.js',
-    output: [{ file: 'lib/plugins/index.js', format: 'es' }],
+    output: [{ file: 'lib/plugins/index.js', format: 'cjs', exports: 'named' }],
     plugins,
     external,
     watch,
