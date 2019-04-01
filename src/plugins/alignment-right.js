@@ -1,4 +1,5 @@
 import React from 'react';
+import { setIn } from 'immutable';
 import { createPlugin, RenderButton } from '../helpers';
 import { Button, Icon } from '../components';
 
@@ -8,8 +9,12 @@ const ToolbarButton = ({ editor }) => (
   </Button>
 );
 
-const makeHandleClick = editor => () => {
-  editor.setBlocks({ data: { style: { textAlign: 'right' } } });
-};
+const makeHandleClick = editor => () =>
+  editor.value.blocks.forEach(block =>
+    editor.setNodeByKey(
+      block.key,
+      setIn(block.toJS(), ['data', 'style', 'textAlign'], 'right'),
+    ),
+  );
 
 export default () => createPlugin([RenderButton(ToolbarButton)]);

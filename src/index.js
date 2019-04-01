@@ -2,7 +2,6 @@ import React from 'react';
 import { Value } from 'slate';
 import { Editor } from 'slate-react';
 import { Container, Toolbar, Content } from './components';
-import schema from './schema';
 
 const noop = () => {};
 
@@ -31,7 +30,6 @@ class RichTextEditor extends React.Component {
             plugins={plugins}
             value={value}
             onChange={onChange}
-            schema={schema}
             style={{ padding: 20 }}
             {...otherProps}
           />

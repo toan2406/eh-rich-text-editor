@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import RichTextEditor, { fromJSON } from '../lib';
+import RichTextEditor, { fromJSON } from '../src';
 import {
   branch,
   headingOne,
@@ -16,7 +16,7 @@ import {
   image,
   table,
   defaultNode,
-} from '../lib/plugins';
+} from '../src/plugins';
 import { BORDER_COLOR } from '../src/constants/color';
 
 const initialValue = fromJSON({

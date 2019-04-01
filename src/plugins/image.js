@@ -11,7 +11,6 @@ const getBorderByStatus = ({ selected }) =>
   selected ? 'solid thin blue' : 'none';
 
 const Image = styled.img`
-  display: block;
   max-width: 100%;
   border: ${getBorderByStatus};
 `;
@@ -39,10 +38,15 @@ const Placeholder = styled.div.attrs({
   background: ${IMAGE_PLACEHOLDER_COLOR};
 `;
 
-const Node = ({ node, isFocused, attributes }) => {
-  const src = node.data.get('src');
+const Node = ({ isFocused, attributes, node: { data } }) => {
+  const src = data.get('src');
+  const style = data.get('style');
   if (!src) return <Placeholder selected={isFocused} {...attributes} />;
-  return <Image src={src} selected={isFocused} {...attributes} />;
+  return (
+    <div {...attributes} style={style}>
+      <Image src={src} selected={isFocused} />
+    </div>
+  );
 };
 
 const makeHandleFileChange = (editor, uploadImage) => e => {
@@ -66,8 +70,28 @@ const makeHandleFileChange = (editor, uploadImage) => e => {
 
 const clearValue = e => (e.target.value = null);
 
+const schema = {
+  document: {
+    last: { type: 'paragraph' },
+    normalize: (editor, { code, node, child }) => {
+      switch (code) {
+        case 'last_child_type_invalid': {
+          const paragraph = Block.create('paragraph');
+          return editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
+        }
+      }
+    },
+  },
+  blocks: {
+    image: {
+      isVoid: true,
+    },
+  },
+};
+
 export default ({ uploadImage }) =>
   createPlugin([
+    { schema },
     RenderNode(IMAGE_NODE, Node),
     RenderButton(({ editor }) => (
       <Button isSeparated>
