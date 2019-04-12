@@ -61,9 +61,9 @@ const makeHandleFileChange = (editor, uploadImage) => e => {
 
   editor.insertBlock(image);
 
-  uploadImage(file).then(url =>
+  uploadImage(file).then((src, meta = {}) =>
     editor.setNodeByKey(image.key, {
-      data: { src: url },
+      data: { src, meta },
     }),
   );
 };
