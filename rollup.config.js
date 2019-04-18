@@ -38,4 +38,11 @@ export default [
     external,
     watch,
   },
+  {
+    input: 'src/deserializer/index.js',
+    output: [{ file: 'lib/deserializer/index.js', format: 'es' }],
+    plugins,
+    external,
+    watch,
+  },
 ];
